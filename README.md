@@ -35,6 +35,8 @@ answer + source citations, persisted to history (Redis / in-memory)
 
 The relevance filter matters more than it sounds: without it, a chatbot will confidently answer off-topic questions using whatever the top-K vector matches happen to be, even if none of them are actually relevant. Dropping low-score matches means the system can honestly say "I don't have enough information" instead. The threshold (default `0.65`) was calibrated empirically against real multi-topic document chunks, not toy single-sentence examples — see the comment in `lib/retrieval.ts` for the measured score distribution that motivated it.
 
+One retrieval edge case worth knowing: broad meta-questions ("tell me about this doc", "summarize this") have no strong semantic content to match against, so they score low via similarity search even when genuinely on-topic. `lib/query-intent.ts` detects this query shape and routes it to `sampleNamespaceChunks` (a direct sample of uploaded chunks) instead of similarity search — see `app/actions/chat.ts`.
+
 ## Project layout
 
 - `lib/retrieval.ts` — namespaced vector search/upsert + relevance-score thresholding

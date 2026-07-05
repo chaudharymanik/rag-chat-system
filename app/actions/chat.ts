@@ -4,7 +4,8 @@ import { streamText } from "ai";
 import { createStreamableValue, type StreamableValue } from "ai/rsc";
 import { chatModel } from "@/lib/llm";
 import { buildSystemPrompt } from "@/lib/prompt";
-import { retrieveRelevantChunks } from "@/lib/retrieval";
+import { retrieveRelevantChunks, sampleNamespaceChunks } from "@/lib/retrieval";
+import { isBroadQuery } from "@/lib/query-intent";
 import { getHistoryStore } from "@/lib/history";
 import type { ChatMessage, RetrievedChunk } from "@/lib/types";
 
@@ -22,7 +23,9 @@ export async function askQuestion(
 
   await history.append(sessionId, question);
 
-  const sources = await retrieveRelevantChunks(question.content, sessionId);
+  const sources = isBroadQuery(question.content)
+    ? await sampleNamespaceChunks(sessionId)
+    : await retrieveRelevantChunks(question.content, sessionId);
 
   const priorTurns = conversation
     .slice(0, -1)

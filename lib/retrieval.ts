@@ -77,3 +77,27 @@ export async function clearNamespace(namespace: string): Promise<void> {
     // no-op if the namespace never had anything upserted into it
   });
 }
+
+// For broad/summary questions ("tell me about this doc"), similarity search
+// doesn't help — a generic question has no strong semantic anchor to match
+// against, so it scores low against every chunk even though the question is
+// perfectly on-topic. Instead, sample chunks directly in upload order, which
+// gives the model actual document content to describe. See isBroadQuery.
+export async function sampleNamespaceChunks(
+  namespace: string,
+  limit: number = DEFAULT_TOP_K
+): Promise<RetrievedChunk[]> {
+  const { vectors } = await getIndex().namespace(namespace).range({
+    cursor: "0",
+    limit,
+    includeMetadata: true,
+    includeData: true,
+  });
+
+  return vectors.map((v) => ({
+    id: String(v.id),
+    score: 1, // not a similarity score — a direct sample, not a ranked match
+    content: typeof v.data === "string" ? v.data : "",
+    metadata: v.metadata as Record<string, unknown> | undefined,
+  }));
+}
