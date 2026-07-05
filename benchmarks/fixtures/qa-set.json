@@ -1,0 +1,26 @@
+[
+  {
+    "question": "What internships has this person done?",
+    "goldAnswer": "A Full-Stack Developer Intern at Introis Technologies (June-August 2025) and an Application Testing Intern (May-June 2025)."
+  },
+  {
+    "question": "What university does this person attend and what is their GPA?",
+    "goldAnswer": "Vellore Institute of Technology (VIT), Vellore, pursuing a B.Tech in Computer Science with a CGPA of 8.75/10 through semester 5."
+  },
+  {
+    "question": "What database technologies does this person have experience with?",
+    "goldAnswer": "MySQL, MongoDB, Redis, and Upstash Vector (a vector database)."
+  },
+  {
+    "question": "Describe the SnapSend project.",
+    "goldAnswer": "A file-sharing platform built with Next.js, Express.js, AWS S3, and MongoDB, featuring drag-and-drop uploads, a pre-signed URL workflow for direct browser-to-S3 transfers that reduced upload latency by 70%, expiring share links, S3 lifecycle cleanup, rate limiting, and Helmet.js security."
+  },
+  {
+    "question": "What certifications does this person hold?",
+    "goldAnswer": "AWS Certified Associate Developer, a Web Development Bootcamp on Udemy, a Data Structures and Algorithms using C/C++ course on Udemy, and a Deloitte Australia Data Analytics and Visualization job simulation on Forage."
+  },
+  {
+    "question": "What did they do in the Application Testing Intern role?",
+    "goldAnswer": "Designed QA automation for hospital data pipelines using Python, authored 120+ automated test cases across 3 modules, accelerated regression testing by 40%, eliminated 15 critical bugs, and deployed analytics pipelines reducing processing time from 6 days to 30 minutes."
+  }
+]
