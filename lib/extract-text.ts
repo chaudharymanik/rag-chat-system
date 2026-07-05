@@ -1,4 +1,4 @@
-import pdfParse from "pdf-parse";
+import pdfParse from "pdf-parse/lib/pdf-parse.js";
 
 const SUPPORTED_EXTENSIONS = new Set(["txt", "md", "pdf"]);
 
