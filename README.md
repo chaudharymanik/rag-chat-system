@@ -2,7 +2,7 @@
 
 A retrieval-augmented generation (RAG) chat system. Upload a document (`.txt`, `.md`, or `.pdf`) and ask questions about it — answers are grounded only in what you've uploaded, with relevance-score filtering to avoid hallucinating from irrelevant matches, streaming responses, and visible source citations. Each browser session gets its own isolated document scope, so uploads never mix between users.
 
-**Live demo:** _add your deployed Vercel URL here_
+**Live demo:** https://rag-chat-system-tau.vercel.app/
 
 ## How it works
 
