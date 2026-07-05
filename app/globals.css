@@ -3,12 +3,23 @@
 @tailwind utilities;
 
 :root {
-  --background: #0b0d10;
-  --foreground: #e6e8eb;
+  --background: #0a0a0b;
+  --foreground: #e9e7e2;
+  --surface: #131315;
+  --surface-2: #1b1b1e;
+  --border: #26262a;
+  --muted: #92908c;
+  --accent: #e0a339;
+  --accent-foreground: #1a1305;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-foreground);
 }
